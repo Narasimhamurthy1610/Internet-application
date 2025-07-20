@@ -4,6 +4,10 @@
 > I recommend using **UV** to bootstrap your peojects.  
 > [Copier](https://github.com/copier-org/copier) is a tools that can bootstrap projects from templates.  
 
+#Testing PR check
+1. need to create pr
+2. merge the pr
+3. it should trigger pr-check yml file and see if that is success
 
 # Flask Project Template
 
