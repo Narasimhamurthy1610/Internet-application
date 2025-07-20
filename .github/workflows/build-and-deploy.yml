@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: yourdockerhubuser/yourapp  # update this!
+  IMAGE_NAME: 8310222505/internet-application  # update this!
   CONTAINER_PORT: 5000
   HOST_PORT: 80
 
