@@ -9,7 +9,7 @@
 2. merge the pr
 3. it should trigger pr-check yml file and see if that is success
 4. Testing one last time
-
+5. testing the build and deploy after pr is merged
 # Flask Project Template
 
 A full feature Flask project template.
