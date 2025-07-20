@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      
+      - name: Remove old python-version if any
+        run: rm -rf ~/.pyenv ~/.cache/pip
 
       - name: Set up Python
         uses: actions/setup-python@v4
