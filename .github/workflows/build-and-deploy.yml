@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: http://${{ secrets.EC2_HOST }}
+      #url: http://${{ secrets.EC2_HOST }}
     concurrency:
       group: prod-deploy
       cancel-in-progress: false
