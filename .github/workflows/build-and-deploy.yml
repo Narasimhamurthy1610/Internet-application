@@ -38,11 +38,11 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          pytest tests/unit
+          pytest tests/
 
       - name: Run Integration Tests
         run: |
-          pytest tests/integration
+          pytest tests/
 
   build-and-push:
     runs-on: ubuntu-22.04
