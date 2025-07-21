@@ -88,8 +88,8 @@ jobs:
             cd /home/${USER}
             if [ ! -d monitoring-logging ]; then
               git clone https://github.com/Narasimhamurthy1610/Internet-application.git --depth=1
-              mv your-repo/monitoring-logging ./
-              rm -rf your-repo
+              mv Internet-application/monitoring-logging ./
+              rm -rf Internet-application
             fi
             cd monitoring-logging
             docker compose -f monitoring/docker-compose.yml up -d
