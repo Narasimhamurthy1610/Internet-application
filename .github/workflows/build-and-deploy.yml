@@ -82,13 +82,23 @@ jobs:
           echo "${{ secrets.EC2_KEY }}" | base64 -d > key.pem
           chmod 600 key.pem
 
-      - name: Copy Monitoring & Logging Code to EC2
+      - name: Setup Monitoring on EC2
         run: |
-          scp -o StrictHostKeyChecking=no -i key.pem -r monitoring-logging/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
-      
+          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd /home/${USER}
+            if [ ! -d monitoring-logging ]; then
+              git clone https://github.com/your-org/your-repo.git --depth=1
+              mv your-repo/monitoring-logging ./
+              rm -rf your-repo
+            fi
+            cd monitoring-logging
+            docker compose -f monitoring/docker-compose.yml up -d
+            docker compose -f logging/docker-compose.yml up -d
+          EOF
+
       - name: Remove SSH key
         run: rm -f key.pem
-        
+
       - name: Deploy Monitoring Stack
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
